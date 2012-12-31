@@ -1,4 +1,4 @@
 Twitter-Webapp-Sample
 =====================
 
-Sample source codes for Twitter. (Perl/CGI)
+Sample source code for Twitter. (Perl/CGI)
