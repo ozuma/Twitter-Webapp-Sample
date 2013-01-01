@@ -30,8 +30,8 @@ $session->param(-name=>'screen_name', -value=>$screen_name);
 my $cookie = CGI::Cookie->new(-name    =>  'CGISESSID',
                              -value   =>  $session->id(),
                              -expires =>  '+1M',
-                             -path    =>  '/twitter_sample'
+                             -path    =>  '/Twitter-Webapp-Sample'
                             );
 
-print $cgi->header(-cookie=>$cookie, -location => 'http://ozuma.sakura.ne.jp/twitter_sample/');
+print $cgi->header(-cookie=>$cookie, -location => 'http://ozuma.sakura.ne.jp/Twitter-Webapp-Sample/');
 
