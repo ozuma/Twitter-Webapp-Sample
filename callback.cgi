@@ -33,5 +33,8 @@ my $cookie = CGI::Cookie->new(-name    =>  'CGISESSID',
                              -path    =>  '/Twitter-Webapp-Sample'
                             );
 
-print $cgi->header(-cookie=>$cookie, -location => 'http://ozuma.sakura.ne.jp/Twitter-Webapp-Sample/');
+print $cgi->header(
+  -cookie=>$cookie,
+  -location => 'http://ozuma.sakura.ne.jp/Twitter-Webapp-Sample/'
+);
 
