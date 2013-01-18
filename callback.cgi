@@ -7,7 +7,7 @@ use CGI::Session;
 
 my $cgi = new CGI;
 my $session = new CGI::Session(undef, undef, {Directory=>'/tmp'});
-$session->expire('+1M');
+$session->expire('+12h');
 
 my $oauth_verifier = $cgi->param('oauth_verifier');
 
@@ -29,7 +29,7 @@ $session->param(-name=>'screen_name', -value=>$screen_name);
 
 my $cookie = CGI::Cookie->new(-name    =>  'CGISESSID',
                              -value   =>  $session->id(),
-                             -expires =>  '+1M',
+                             -expires =>  '+12h',
                              -path    =>  '/Twitter-Webapp-Sample'
                             );
 
