@@ -15,6 +15,13 @@ unless ($cgi->cookie("CGISESSID")) {
 }
 
 my $session = new CGI::Session(undef, $cgi->cookie("CGISESSID"), {Directory=>'/tmp'});
+unless ($cgi->cookie("CGISESSID") eq $session->id) {
+  $session->close;
+  $session->delete;
+  print "You are not logged in. Access: \n\n";
+  print "http://ozuma.sakura.ne.jp/Twitter-Webapp-Sample/login.cgi\n";
+  exit;
+}
 
 my $nt = Net::Twitter->new(
   traits   => [qw/OAuth API::REST/],
