@@ -17,7 +17,7 @@ unless ($cgi->cookie("CGISESSID")) {
 }
 
 my $session = new CGI::Session(undef, $cgi->cookie("CGISESSID"), {Directory=>'/tmp'});
-unless ($cgi->cookie("CGISESSID") eq $session->id) {
+unless ($session->param(-name=>'access_token')) {
   $session->close;
   $session->delete;
   print $NOT_LOGIN_MES;
