@@ -5,12 +5,14 @@ use CGI;
 use CGI::Session;
 use Net::Twitter;
 
+my $NOT_LOGIN_MES = "You are not logged in. Access: \n\n" .
+  "http://ozuma.sakura.ne.jp/Twitter-Webapp-Sample/login.cgi\n";
+
 my $cgi = new CGI;
 print $cgi->header(-type=>'text/plain', -charset=>'utf-8');
 
 unless ($cgi->cookie("CGISESSID")) {
-  print "You are not logged in. Access: \n\n";
-  print "http://ozuma.sakura.ne.jp/Twitter-Webapp-Sample/login.cgi\n";
+  print $NOT_LOGIN_MES;
   exit;
 }
 
@@ -18,8 +20,7 @@ my $session = new CGI::Session(undef, $cgi->cookie("CGISESSID"), {Directory=>'/t
 unless ($cgi->cookie("CGISESSID") eq $session->id) {
   $session->close;
   $session->delete;
-  print "You are not logged in. Access: \n\n";
-  print "http://ozuma.sakura.ne.jp/Twitter-Webapp-Sample/login.cgi\n";
+  print $NOT_LOGIN_MES;
   exit;
 }
 
