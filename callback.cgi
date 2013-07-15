@@ -7,12 +7,12 @@ use CGI::Session;
 
 my $cgi = new CGI;
 my $session = new CGI::Session(undef, undef, {Directory=>'/tmp'});
-$session->expire('+12h');
+$session->expire('+1M');
 
 my $oauth_verifier = $cgi->param('oauth_verifier');
 
 my $nt = Net::Twitter->new(
-    traits => [qw/API::REST OAuth/],
+    traits => [qw/API::RESTv1_1/],
     consumer_key => "xxxxxxxxxxxxxxxxxx",
     consumer_secret => "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ",
 );
@@ -29,7 +29,7 @@ $session->param(-name=>'screen_name', -value=>$screen_name);
 
 my $cookie = CGI::Cookie->new(-name    =>  'CGISESSID',
                              -value   =>  $session->id(),
-                             -expires =>  '+12h',
+                             -expires =>  '+1M',
                              -path    =>  '/Twitter-Webapp-Sample'
                             );
 

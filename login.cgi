@@ -7,7 +7,7 @@ use CGI;
 my $cgi = new CGI;
 
 my $nt = Net::Twitter->new(
-  traits          => ['API::REST', 'OAuth'],
+  traits          => [qw/API::RESTv1_1/],
   consumer_key    => "xxxxxxxxxxxxxxxxxx",
   consumer_secret => "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ",
 );
